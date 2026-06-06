@@ -95,6 +95,8 @@ async function searchPlayer() {
 
     console.log(allPlayers);
 
+    alert(JSON.stringify(allPlayers));
+
     const player = allPlayers.find(
         p => p.name.toLowerCase() === name.toLowerCase()
     );
@@ -104,26 +106,6 @@ async function searchPlayer() {
             "<div class='card'>Player not found.</div>";
         return;
     }
-
-    const percent =
-        player.advancements
-          ((player.advancements / 1062) * 100).toFixed(1);
-
-    const categories =
-        Object.entries(player.categories)
-        .map(([name,value]) =>
-            `<li>${name}: ${value}</li>`
-        ).join("");
-
-    const recent =
-        player.recent
-        .map(a => `<li>✅ ${a}</li>`)
-        .join("");
-
-    const locked =
-        player.locked
-        .map(a => `<li>🔒 ${a}</li>`)
-        .join("");
 
     document.getElementById("result").innerHTML = `
         <div class="card">
