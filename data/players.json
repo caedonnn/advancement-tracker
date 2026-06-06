@@ -2,36 +2,11 @@
   "players": [
     {
       "name": "Caedonnn",
-      "uuid": "4280396d-07dc-46b8-b277-f0ee6456e454",
-      "advancementsCompleted": 14,
-      "totalAdvancements": 1062,
-      "categories": {
-        "Adventure": 3,
-        "Building": 4,
-        "Mining": 1,
-        "Biomes": 2,
-        "Statistics": 2,
-        "Monsters": 2
-      },
-      "recent": [
-        "Heart of Darkness",
-        "Pot Planter",
-        "Grave Robber"
-      ],
-      "locked": [
-        "Explorer of Worlds",
-        "Warm Feet",
-        "Rainbow Dreams"
-      ]
+      "advancements": 65
     },
     {
       "name": "aro__",
-      "uuid": "76692783-7a5b-4375-ad03-93c6c84c6074",
-      "advancementsCompleted": 48,
-      "totalAdvancements": 1062,
-      "categories": {},
-      "recent": [],
-      "locked": []
+      "advancements": 200
     }
   ]
 }
