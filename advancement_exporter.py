@@ -22,7 +22,7 @@ players = []
 
 for uuid, name in UUID_TO_NAME.items():
     try:
-        path = path = f"world/advancements/{uuid}.json"
+        path = f"world/advancements/{uuid}.json"
 
         with sftp.open(path, "r") as f:
             data = json.loads(f.read())
@@ -30,7 +30,13 @@ for uuid, name in UUID_TO_NAME.items():
         completed = 0
 
         for advancement, info in data.items():
-            if isinstance(info, dict) and info.get("done") is True:
+
+            if (
+    		advancement.startswith("blazeandcave:")
+    		and "technical/" not in advancement
+    		and isinstance(info, dict)
+    		and info.get("done") is True
+	    ):
                 completed += 1
 
         players.append({
