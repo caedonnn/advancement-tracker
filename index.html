@@ -91,11 +91,7 @@ async function loadData() {
 
 async function searchPlayer() {
 
-    const name = document.getElementById("playerName").value;
-
-    console.log(allPlayers);
-
-    alert(JSON.stringify(allPlayers));
+    const name = document.getElementById("playerName").value.trim();
 
     const player = allPlayers.find(
         p => p.name.toLowerCase() === name.toLowerCase()
@@ -103,36 +99,14 @@ async function searchPlayer() {
 
     if (!player) {
         document.getElementById("result").innerHTML =
-            "<div class='card'>Player not found.</div>";
+            '<div class="card">Player not found.</div>';
         return;
     }
 
     document.getElementById("result").innerHTML = `
         <div class="card">
-
             <h2>${player.name}</h2>
-
-            <p>
-                <b>Progress:</b>
-                ${player.advancements}/1062
-                (${percent}%)
-            </p>
-
-            <div class="progress-bar">
-                <div class="progress-fill"
-                     style="width:${percent}%">
-                </div>
-            </div>
-
-            <h3>📊 Categories</h3>
-            <ul>${categories}</ul>
-
-            <h3>🕒 Recent Advancements</h3>
-            <ul>${recent}</ul>
-
-            <h3>🔒 Locked Advancements</h3>
-            <ul>${locked}</ul>
-
+            <p><b>Advancements:</b> ${player.advancements}</p>
         </div>
     `;
 }
