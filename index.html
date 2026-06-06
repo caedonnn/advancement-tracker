@@ -93,6 +93,8 @@ async function searchPlayer() {
 
     const name = document.getElementById("playerName").value;
 
+    console.log(allPlayers);
+
     const player = allPlayers.find(
         p => p.name.toLowerCase() === name.toLowerCase()
     );
