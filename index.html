@@ -1,10 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Advancement Tracker</title>
+    <title>Blaze & Cave Advancement Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            background: #111;
+            color: white;
+        }
+
+        .card {
+            background: #222;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 10px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+
 <h1>🏆 Blaze & Cave Advancement Tracker</h1>
-<p>Website setup successful!</p>
+
+<input id="playerName" placeholder="Enter player name">
+<button onclick="searchPlayer()">Search</button>
+
+<div id="result"></div>
+
+<script>
+async function searchPlayer() {
+    const name = document.getElementById("playerName").value;
+
+    const response = await fetch("data/players.json");
+    const data = await response.json();
+
+    const player = data.players.find(
+        p => p.name.toLowerCase() === name.toLowerCase()
+    );
+
+    if (!player) {
+        document.getElementById("result").innerHTML =
+            "<div class='card'>Player not found.</div>";
+        return;
+    }
+
+    const percent =
+        ((player.advancementsCompleted / player.totalAdvancements) * 100)
+        .toFixed(1);
+
+    document.getElementById("result").innerHTML = `
+        <div class="card">
+            <h2>${player.name}</h2>
+            <p><b>Progress:</b> ${player.advancementsCompleted}/${player.totalAdvancements} (${percent}%)</p>
+
+            <h3>Recent Advancements</h3>
+            <ul>
+                ${player.recent.map(a => `<li>✅ ${a}</li>`).join("")}
+            </ul>
+        </div>
+    `;
+}
+</script>
+
 </body>
 </html>
