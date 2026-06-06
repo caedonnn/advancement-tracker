@@ -84,7 +84,7 @@ async function loadData() {
     document.getElementById("leaderboard").innerHTML =
         allPlayers.map((p,i) =>
             `<div class="leaderboard-entry">
-                ${p.advancements}
+                #${i+1} ${p.name} (${p.advancements})
             </div>`
         ).join("");
 }
@@ -92,6 +92,8 @@ async function loadData() {
 async function searchPlayer() {
 
     const name = document.getElementById("playerName").value;
+
+    console.log(allPlayers);
 
     const player = allPlayers.find(
         p => p.name.toLowerCase() === name.toLowerCase()
