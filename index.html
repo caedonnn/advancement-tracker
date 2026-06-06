@@ -84,7 +84,7 @@ async function loadData() {
     document.getElementById("leaderboard").innerHTML =
         allPlayers.map((p,i) =>
             `<div class="leaderboard-entry">
-                ${p.advancements}
+                #${i+1} ${p.name} (${p.advancements})
             </div>`
         ).join("");
 }
