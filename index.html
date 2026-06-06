@@ -78,13 +78,13 @@ async function loadData() {
     allPlayers = data.players;
 
     allPlayers.sort((a,b) =>
-        b.advancementsCompleted - a.advancementsCompleted
+        b.advancements - a.advancements
     );
 
     document.getElementById("leaderboard").innerHTML =
         allPlayers.map((p,i) =>
             `<div class="leaderboard-entry">
-                #${i+1} ${p.name} (${p.advancementsCompleted})
+                ${p.advancements}
             </div>`
         ).join("");
 }
@@ -104,8 +104,8 @@ async function searchPlayer() {
     }
 
     const percent =
-        ((player.advancementsCompleted /
-          player.totalAdvancements) * 100).toFixed(1);
+        player.advancements
+          ((player.advancements / 1062) * 100).toFixed(1);
 
     const categories =
         Object.entries(player.categories)
@@ -130,7 +130,7 @@ async function searchPlayer() {
 
             <p>
                 <b>Progress:</b>
-                ${player.advancementsCompleted}/${player.totalAdvancements}
+                ${player.advancements}/1062
                 (${percent}%)
             </p>
 
